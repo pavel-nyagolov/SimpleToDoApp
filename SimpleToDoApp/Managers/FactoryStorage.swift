@@ -32,14 +32,6 @@ class FactoryStorage {
         NotificationCenter.default.post(name: .updateTaskNotification, object: nil)
     }
     
-    static func getLists() -> [ListModel]? {
-        return Array(FactoryStorage.realm.objects(ListModel.self).sorted(byKeyPath: "id", ascending: true))
-    }
-    
-    static func getList(id: ObjectId) -> ListModel? {
-        return FactoryStorage.realm.objects(ListModel.self).first(where: {$0.id == id})
-    }
-    
     static func deleteList(_ list: ListModel) {
         FactoryStorage.realm.beginWrite()
         FactoryStorage.realm.delete(list)
@@ -50,5 +42,13 @@ class FactoryStorage {
         FactoryStorage.realm.beginWrite()
         FactoryStorage.realm.delete(task)
         try? FactoryStorage.realm.commitWrite()
+    }
+    
+    static func getLists() -> [ListModel]? {
+        return Array(FactoryStorage.realm.objects(ListModel.self).sorted(byKeyPath: "id", ascending: true))
+    }
+    
+    static func getList(id: ObjectId) -> ListModel? {
+        return FactoryStorage.realm.objects(ListModel.self).first(where: {$0.id == id})
     }
 }

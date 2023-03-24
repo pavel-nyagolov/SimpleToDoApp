@@ -78,7 +78,7 @@
 		E923F3BA29BB58A5002CD66C /* SimpleToDoApp */ = {
 			isa = PBXGroup;
 			children = (
-				E95CA91A29CDACCF00B74DAD /* Custom */,
+				E95CA91A29CDACCF00B74DAD /* Customs */,
 				E923F3D029BB6018002CD66C /* Controllers */,
 				E923F3E529BB6AC5002CD66C /* Managers */,
 				E923F3CF29BB5FF4002CD66C /* Storyboards */,
@@ -139,12 +139,12 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		E95CA91A29CDACCF00B74DAD /* Custom */ = {
+		E95CA91A29CDACCF00B74DAD /* Customs */ = {
 			isa = PBXGroup;
 			children = (
 				E95CA91B29CDAD0200B74DAD /* AddButton.swift */,
 			);
-			path = Custom;
+			path = Customs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

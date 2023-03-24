@@ -10,13 +10,13 @@ import UIKit
 class ListsViewController: UIViewController {
 
     @IBOutlet weak var listsTableView: UITableView!
+    
+    var isEditingClicked = false
     var lists: [ListModel] = [] {
         didSet {
             listsTableView.reloadData()
         }
     }
-    
-    var isEditingClicked = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,6 +96,15 @@ extension ListsViewController: UITableViewDelegate, UITableViewDataSource {
         performSegue(withIdentifier: Constants.homeToList, sender: selectedList)
     }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        FactoryStorage.deleteList(lists[indexPath.row])
+        updateData()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let segueDestination = segue.destination as? ListViewController else {
             return
@@ -104,13 +113,5 @@ extension ListsViewController: UITableViewDelegate, UITableViewDataSource {
         segueDestination.list = sender.self as! ListModel
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
-    }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        //delete list
-        FactoryStorage.deleteList(lists[indexPath.row])
-        updateData()
-    }
 }

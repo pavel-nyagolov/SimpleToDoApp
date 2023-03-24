@@ -11,9 +11,8 @@ class ListViewController: UIViewController {
 
     @IBOutlet weak var tasksTableView: UITableView!
     
-    var list: ListModel = ListModel()
-    
     var isEditingClicked = false
+    var list: ListModel = ListModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +46,6 @@ class ListViewController: UIViewController {
     @IBAction func addTaskButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: Constants.createNewTask, sender: self)
     }
-    
     
     @IBAction func didEditClicked(_ sender: UIBarButtonItem) {
         if !isEditingClicked {

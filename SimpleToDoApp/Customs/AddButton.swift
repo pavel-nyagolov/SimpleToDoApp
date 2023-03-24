@@ -17,7 +17,6 @@ class AddButton: UIButton {
                 self.layer.cornerRadius = layer.frame.height / 2
             } else {
                 self.layer.cornerRadius = cornerRadius
-                
             }
         }
     }
