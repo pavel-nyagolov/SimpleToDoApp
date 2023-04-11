@@ -24,10 +24,7 @@ class ListsViewController: UIViewController {
             self?.updateData()
         }
         
-        guard let listStorage = FactoryStorage.getLists() else {
-            return
-        }
-        lists = listStorage
+        updateData()
         
     }
     
