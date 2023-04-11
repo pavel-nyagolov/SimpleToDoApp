@@ -12,7 +12,11 @@ class ListViewController: UIViewController {
     @IBOutlet weak var tasksTableView: UITableView!
     
     var isEditingClicked = false
-    var list: ListModel = ListModel()
+    var list: ListModel = ListModel() {
+        didSet {
+            tasksTableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +30,7 @@ class ListViewController: UIViewController {
             self?.updateData()
         }
         
-        guard let listStorage = FactoryStorage.getList(id: list.id) else {
-            return
-        }
-        list = listStorage
-        tasksTableView.reloadData()
+        updateData()
     }
     
     func updateData() {
